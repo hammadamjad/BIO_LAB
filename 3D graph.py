@@ -10,10 +10,10 @@ fig = plt.figure()
 ax = Axes3D(fig)
 
 def f(x, y,lstn):
-    E1 = 65.1-(0.6675*x)+(0.00175*pow(x,2))
-    E2 = 480+(5.35 * x) - (0.015 * pow(x, 2))
+    E1 = np.exp(2*y)+(2*np.exp(-y))
+    E2 = np.exp(-2*y)+(2*np.exp(y))
     expo = -N/(E2*0.1)
-    z = (E1*y)+(E2*0.1)*(1-np.exp(expo*y))
+    z = (0.143*(E1-3))+(0.0000022*pow(E2-3,2))
     return z
 
 ex = 110

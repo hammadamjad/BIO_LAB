@@ -13,7 +13,7 @@ def f(x, y):
     E1 = np.exp(2*y)+(2*np.exp(-y))
     E2 = np.exp(-2*y)+(2*np.exp(y))
     # expo = -N/(E2*0.1)
-    z = (0.00967*(E1-3))+(0.00244 *(E2-3))
+    z = (E1+E2-6)*0.635*0.25
     return z
 
 # ex = 110
@@ -33,7 +33,7 @@ def f(x, y):
 #     i+=1
 # len_y = len(lst_y)-1
 # len_n = len(lst_n)-1
-x = np.linspace(120, 200, 30)
+x = np.linspace(100, 180, 30)
 y = np.linspace(0.1,2.5, 30)
 # N = np.linspace(lst_n[0],lst_n[len_n],30)
 

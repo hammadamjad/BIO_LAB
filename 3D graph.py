@@ -1,3 +1,4 @@
+import math
 from mpl_toolkits.mplot3d import Axes3D
 from mplot3d_dragger import Dragger3D
 import numpy as np
@@ -9,34 +10,33 @@ lst_z1 = []
 lst_z2 = []
 lst_z3 = []
 J=0
-e = 16887
-while(J<6):
+e = 120
+while(J<9):
     lst_x.append(e)
-    e += 16887
+    e += 10
     J += 1
 def func(lst_z,y):
-    ex = 16887
+    ex = 120
     t = 0.1
     i = 0
-    while(i<6):
-        z1 = 0.0027038/(t*y*3.14*pow(0.0015,2))
-        z2 = 1-pow(ex/101325,0.75187)
-        z = z1*z2
+    while(i<9):
+        tg = 387 +((-83.5*math.log10(1/y))/(32.58+math.log10(1/y)))
+        z = 1337*((1.42*tg+44.7)/(1.27*tg+0.3*ex))
         lst_z.append(z)
-        ex+=16887
+        ex+=10
         i+=1
     return lst_z
 
 x = lst_x
-z1 = func(lst_z1,2)
-z2 = func(lst_z2,5)
-z3 = func(lst_z3,10)
-plt.plot(x, z1,label = "NO. OF HOLES = 2", marker='o',markersize=12, markerfacecolor='black',color='orange',linewidth=4)
-plt.plot(x, z2,label = "NO. OF HOLES = 5", marker='o',markersize=12, markerfacecolor='black',color='red',linewidth=4)
-plt.plot(x, z3,label = "NO. OF HOLES = 10", marker='o',markersize=12, markerfacecolor='black',color='blue',linewidth=4)
-plt.xlabel('PRESSURE ')
-plt.ylabel('VELOCITY')
-plt.title("AIR EVACUATING VELOCITY")
+z1 = func(lst_z1,0.1)
+# z2 = func(lst_z2,0.5)
+# z3 = func(lst_z3,1)
+plt.plot(x, z1,label = "STRAIN RATE = 2", marker='o',markersize=12, markerfacecolor='black',color='orange',linewidth=4)
+# plt.plot(x, z2,label = "NO. OF HOLES = 5", marker='o',markersize=12, markerfacecolor='black',color='red',linewidth=4)
+# plt.plot(x, z3,label = "NO. OF HOLES = 10", marker='o',markersize=12, markerfacecolor='black',color='blue',linewidth=4)
+plt.xlabel('TEMPERATURE ')
+plt.ylabel('DENSITY')
+plt.title("DENSITY ANALYSIS")
 ax.set_facecolor('yellow')
 plt.legend()
 plt.show()

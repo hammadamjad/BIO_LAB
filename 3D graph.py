@@ -15,7 +15,7 @@ while(J<9):
     lst_x.append(e)
     e += 10
     J += 1
-def func(lst_z,y):
+def func1(lst_z,y):
     ex = 120
     t = 0.1
     i = 0
@@ -26,13 +26,24 @@ def func(lst_z,y):
         ex+=10
         i+=1
     return lst_z
+def func2(lst_z,y):
+    ex = 120
+    t = 0.1
+    i = 0
+    while(i<9):
+        tg = 354 +((54*math.log10(1/y))/(3.4+math.log10(1/y)))
+        z = 1060*((1.42*tg+44.7)/(1.27*tg+0.3*ex))
+        lst_z.append(z)
+        ex+=10
+        i+=1
+    return lst_z
 
 x = lst_x
-z1 = func(lst_z1,0.1)
-# z2 = func(lst_z2,0.5)
+z1 = func1(lst_z1,0.1)
+z2 = func2(lst_z2,0.1)
 # z3 = func(lst_z3,1)
-plt.plot(x, z1,label = "STRAIN RATE = 2", marker='o',markersize=12, markerfacecolor='black',color='orange',linewidth=4)
-# plt.plot(x, z2,label = "NO. OF HOLES = 5", marker='o',markersize=12, markerfacecolor='black',color='red',linewidth=4)
+plt.plot(x, z1,label = "STRAIN RATE = 0.1", marker='o',markersize=12, markerfacecolor='black',color='orange',linewidth=4)
+# plt.plot(x, z2,label = "STRAIN RATE = 0.1", marker='o',markersize=12, markerfacecolor='black',color='red',linewidth=4)
 # plt.plot(x, z3,label = "NO. OF HOLES = 10", marker='o',markersize=12, markerfacecolor='black',color='blue',linewidth=4)
 plt.xlabel('TEMPERATURE ')
 plt.ylabel('DENSITY')
